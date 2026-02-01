@@ -148,7 +148,7 @@ export default function Projects() {
       </div>
 
       {/* SHOW MORE / LESS */}
-      {projects.length > 6 && (
+      {projects.length > 3 && (
         <div className="mt-16 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
