@@ -8,7 +8,7 @@
 ---
 
 ## About
-I’m a Full-Stack Developer building scalable web applications and AI-powered SaaS platforms using **Next.js, React, Node.js, TypeScript** and modern cloud & database tools. I focus on secure backend architectures, automation-driven user experiences, and production-ready deployments. This README is generated from my resume. :contentReference[oaicite:1]{index=1}
+I’m a Full-Stack Developer building scalable web applications and AI-powered SaaS platforms using **Next.js, React, Node.js, TypeScript** and modern cloud & database tools. I focus on secure backend architectures, automation-driven user experiences, and production-ready deployments. 
 
 ---
 
@@ -30,7 +30,7 @@ I’m a Full-Stack Developer building scalable web applications and AI-powered S
 **What I built**
 - Scalable LMS SaaS with secure auth, subscription & payment flows.
 - Real-time interactive classrooms with an AI vocal agent, AI-generated quizzes, and automated session summaries.
-**Impact:** Improved learner engagement and instructor efficiency by **~35%**.
+- **Impact:** Improved learner engagement and instructor efficiency through AI-driven automation and insights.
 
 ---
 
@@ -39,7 +39,7 @@ I’m a Full-Stack Developer building scalable web applications and AI-powered S
 **What I built**
 - Full-stack AI SaaS with tiered premium subscriptions and serverless PostgreSQL backend.
 - AI content generators, image/background editors, resume analyzer; integrated automated email workflows.
-- **Impact:** Increased user productivity and engagement through automation and seamless UX.
+- **Impact:** Improved user productivity and engagement through automation-driven workflows.
 
 ---
 
@@ -69,8 +69,8 @@ CGPA: 7.04 / 10
 ---
 
 ## Achievements & Highlights
-- Solved **120+ DSA problems** on LeetCode (strong problem solving). :contentReference[oaicite:2]{index=2}  
-- Multiple production-ready full-stack projects deployed and maintained. :contentReference[oaicite:3]{index=3}  
+- Solved **165+ DSA problems** on LeetCode and GeeksForGeeks (strong problem solving). 
+- Multiple production-ready full-stack projects deployed and maintained. 
 - Recognized for consistent GitHub contributions.
 
 ---
@@ -81,8 +81,7 @@ CGPA: 7.04 / 10
 - Demo: https://resumeclient.vercel.app
 - Demo: https://bookworm-eo73.onrender.com
 - GitHub: https://github.com/yo-soy-dev  
-(Full repository links and README files for each project are available on my GitHub.) :contentReference[oaicite:4]{index=4}
-
+(Full repository links and README files for each project are available on my GitHub.) 
 ---
 
 ## Contact / Hiring
