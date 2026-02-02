@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <SectionWrapper id="about">
-      <h2 className="text-4xl font-bold mb-8 text-white">
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
         About Me
       </h2>
 
-      <p className="text-slate-400 leading-relaxed text-lg max-w-3xl">
+      <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-3xl">
         I’m a <span className="text-white font-medium">Full-Stack Developer</span> based in Lucknow, India, experienced in building{" "}
         <span className="text-cyan-400">scalable web applications</span>,{" "}
         <span className="text-cyan-400">cross-platform mobile apps</span>, and{" "}
@@ -32,8 +32,7 @@ export default function About() {
         to contribute to impactful products and grow as a developer.
       </p>
 
-      {/* About Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8 md:mt-10">
         {about.map((category, i) => (
           <motion.div
             key={category.title}
@@ -42,14 +41,14 @@ export default function About() {
             whileHover={{ y: -8, scale: 1.03 }}
             transition={{ duration: 0.3, delay: i * 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="flex items-start gap-4
+            className="flex items-start gap-4 md:gap-4
               bg-white/5 border border-white/10
-              rounded-2xl p-6 backdrop-blur-md
+              rounded-2xl p-4 md:p-6 backdrop-blur-md
               hover:border-cyan-400/40
               hover:shadow-[0_20px_60px_-15px_rgba(56,189,248,0.35)]
               transition-all cursor-pointer"
           >
-            <span className="text-4xl text-cyan-400">
+            <span className="text-3xl md:text-4xl text-cyan-400">
               {category.icon}
             </span>
 

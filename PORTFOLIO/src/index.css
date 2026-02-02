@@ -19,14 +19,12 @@ body {
       #020617 85%
     ),
 
-    /* soft cyan glow */
     radial-gradient(
       600px circle at 45% 35%,
       rgba(34, 211, 238, 0.18),
       transparent 55%
     ),
 
-    /* subtle purple depth */
     radial-gradient(
       700px circle at 70% 60%,
       rgba(139, 92, 246, 0.12),
@@ -78,4 +76,11 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.input-style {
+  @apply py-3 px-3 rounded-xl bg-[var(--bg)]
+  border border-slate-800 placeholder:text-slate-500
+  focus:outline-none focus:border-[var(--primary)]
+  min-h-[44px] text-base md:text-sm;
 }

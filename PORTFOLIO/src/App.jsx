@@ -12,10 +12,8 @@ import Certificates from "./sections/Certificates";
 export default function App() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-gray-200">
-      {/* Top Navigation */}
       <Navbar />
 
-      {/* Main Content */}
       <main>
         <Hero />
         <About />
@@ -27,7 +25,6 @@ export default function App() {
 
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
