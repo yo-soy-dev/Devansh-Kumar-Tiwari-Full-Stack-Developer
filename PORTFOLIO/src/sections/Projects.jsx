@@ -16,7 +16,7 @@ export default function Projects() {
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 text-white">Projects</h2>
 
-      <div className="grid grid-cols-1 ggap-6 md:gap-10">
+      <div className="grid grid-cols-1 gap-6 md:gap-10">
         {visibleProjects.map((p, i) => (
           <motion.div
             key={p.name}
@@ -36,7 +36,8 @@ export default function Projects() {
               flex flex-col md:flex-row gap-5 md:gap-6
               transition-all duration-300
               group-hover:border-cyan-400/40
-              hover:shadow-[0_20px_60px_-15px_rgba(56,189,248,0.35)]"
+              hover:shadow-[0_20px_60px_-15px_rgba(56,189,248,0.35)]
+              overflow-hidden"
             >
               {p.image && (
                 <div className="w-full md:w-1/3 shrink-0">

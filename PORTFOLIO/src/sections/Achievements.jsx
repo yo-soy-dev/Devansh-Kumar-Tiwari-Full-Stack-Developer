@@ -39,18 +39,25 @@ export default function Achievements() {
     transition-all cursor-pointer"
           >
 
+            <div className="flex items-start justify-between gap-2 pr-12 md:pr-0">
+               <h3 className="text-xl font-semibold text-white">
+              {item.title}
+            </h3>
+
+
             {item.title.includes("DSA") && (
-              <span className="absolute top-3 right-3
+              <span className="shrink-0
                 px-2 md:px-3 py-1 text-[11px] md:text-xs font-semibold
                 rounded-full bg-cyan-500/10 text-cyan-400
                 border border-cyan-400/20">
                 165+ Problems
               </span>
             )}
+            </div>
 
-            <h3 className="text-xl font-semibold text-white">
+            {/* <h3 className="text-xl font-semibold text-white">
               {item.title}
-            </h3>
+            </h3> */}
 
             <p className="mt-2 md:mt-3 text-sm md:text-base text-slate-400 leading-relaxed">
               {item.desc}
