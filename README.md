@@ -64,7 +64,7 @@ I’m a Full-Stack Developer building scalable web applications and AI-powered S
 ## Education
 **B.Tech — Computer Science & Engineering**  
 Babu Banarasi Das Engineering College  
-CGPA: 7.04 / 10
+CGPA: 7.26 / 10
 
 ---
 
