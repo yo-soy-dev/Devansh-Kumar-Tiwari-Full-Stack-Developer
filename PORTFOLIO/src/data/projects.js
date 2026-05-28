@@ -35,6 +35,24 @@ export const projects = [
     image: "/projects/creonix.png",
   },
   {
+    name: "SyncForge",
+    desc: "Production-grade real-time collaborative code editor with microservices architecture.",
+    fullDesc:
+      "Architected a real-time collaborative code editor using microservices architecture with 6 independently deployed Node.js services — API Gateway, Auth, Room, Collaboration, AI Assistant, and Code Execution. Implemented conflict-free multi-user synchronization using Yjs CRDT and Socket.IO with Redis Pub/Sub, and built an in-browser sandboxed code execution engine supporting JavaScript, Python, and TypeScript.",
+    highlight:
+      "Deployed 6 microservices on Render with MongoDB Atlas and Upstash Redis; containerized entire stack using Docker Compose enabling one-command local development.",
+    impact: [
+      "Architected 6 independently deployed microservices with API Gateway pattern",
+      "Implemented real-time multi-user sync using Yjs CRDT & Redis Pub/Sub",
+      "Built AI code assistant (review, fix, explain, chat) powered by Mistral AI",
+      "Containerized entire stack with Docker Compose for one-command local dev",
+    ],
+    tech: "React · Node.js · Socket.IO · Yjs · Redis · MongoDB · Docker",
+    link: "https://github.com/yo-soy-dev/SyncForge",
+    live: "https://sync-forge-psi.vercel.app",
+    image: "/projects/syncforge.png",
+  },
+  {
     name: "Novalume",
     desc: "AI-powered resume builder platform with ATS optimization.",
     fullDesc:
