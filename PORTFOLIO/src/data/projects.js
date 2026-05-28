@@ -50,7 +50,7 @@ export const projects = [
     tech: "React · Node.js · Socket.IO · Yjs · Redis · MongoDB · Docker",
     link: "https://github.com/yo-soy-dev/SyncForge",
     live: "https://sync-forge-psi.vercel.app",
-    image: "/projects/syncforge.png",
+    image: "/projects/logo.png",
   },
   {
     name: "Novalume",
