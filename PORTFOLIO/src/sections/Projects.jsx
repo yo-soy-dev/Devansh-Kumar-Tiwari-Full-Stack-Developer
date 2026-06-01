@@ -1,8 +1,12 @@
-
 import { useState } from "react";
 import { projects } from "../data/projects";
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
+
+// Detect touch-only devices to disable hover animations that stick on mobile
+const isTouchDevice =
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: none)").matches;
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -14,15 +18,19 @@ export default function Projects() {
       id="projects"
       className="bg-gradient-to-b from-black via-[#020617] to-black"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 text-white">Projects</h2>
+      {/* ── Section heading — centred on mobile, left on md+ ── */}
+      <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 text-white text-center md:text-left">
+        Projects
+      </h2>
 
       <div className="grid grid-cols-1 gap-6 md:gap-10">
-        {visibleProjects.map((p, i) => (
+        {visibleProjects.map((p) => (
           <motion.div
             key={p.name}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -8, scale: 1.02 }}
+            /* ── Fix 1: hover animation disabled on touch devices ── */
+            whileHover={isTouchDevice ? {} : { y: -8, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: true }}
@@ -30,17 +38,20 @@ export default function Projects() {
               bg-gradient-to-r from-cyan-400/40 via-blue-500/40 to-purple-500/40"
           >
             <div
-              className="relative rounded-3xl p-4 md:p-6
-              bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#020617]
-              border border-white/10 backdrop-blur-xl
-              flex flex-col md:flex-row gap-5 md:gap-6
-              transition-all duration-300
-              group-hover:border-cyan-400/40
-              hover:shadow-[0_20px_60px_-15px_rgba(56,189,248,0.35)]
-              overflow-hidden"
+              className="
+                relative rounded-3xl p-4 md:p-6
+                bg-gradient-to-br from-[#0b1220] via-[#0f172a] to-[#020617]
+                border border-white/10 backdrop-blur-xl
+                flex flex-col md:flex-row gap-5 md:gap-6
+                transition-all duration-300
+                group-hover:border-cyan-400/40
+                md:hover:shadow-[0_20px_60px_-15px_rgba(56,189,248,0.35)]
+                overflow-hidden
+              "
             >
               {p.image && (
-                <div className="w-full md:w-1/3 shrink-0">
+                /* ── Fix 2: wider image pane on desktop (2/5 vs 1/3) ── */
+                <div className="w-full md:w-2/5 shrink-0">
                   <div className="h-48 sm:h-56 md:h-[260px] aspect-video md:aspect-auto overflow-hidden rounded-2xl border border-white/10">
                     <img
                       src={p.image}
@@ -53,8 +64,8 @@ export default function Projects() {
                 </div>
               )}
 
-              <div className="flex-1 flex flex-col">
-                <h3 className="text-2xl md:text-2xl font-bold text-white">
+              <div className="flex-1 flex flex-col min-w-0">
+                <h3 className="text-xl md:text-2xl font-bold text-white">
                   {p.name}
                 </h3>
 
@@ -73,7 +84,7 @@ export default function Projects() {
                 {p.highlight && (
                   <div className="mt-4 p-3 md:p-4 rounded-xl
                     bg-cyan-500/10 border border-cyan-400/20
-                    text-cyan-300 text-sm md:text-sm"
+                    text-cyan-300 text-sm"
                   >
                     ⭐ {p.highlight}
                   </div>
@@ -83,7 +94,7 @@ export default function Projects() {
                   <ul className="mt-4 space-y-2 text-slate-300 text-xs md:text-sm">
                     {p.impact.map((item, idx) => (
                       <li key={idx} className="flex gap-2">
-                        <span className="text-cyan-400">▸</span>
+                        <span className="text-cyan-400 shrink-0">▸</span>
                         {item}
                       </li>
                     ))}
@@ -95,8 +106,11 @@ export default function Projects() {
                     {p.tech.split("·").map((tech) => (
                       <span
                         key={tech}
+                        /* ── Fix 3: truncate long tech names on small screens ── */
                         className="rounded-full px-3 py-1 text-xs
-                          bg-white/5 border border-white/10 text-slate-300"
+                          bg-white/5 border border-white/10 text-slate-300
+                          max-w-[160px] truncate"
+                        title={tech.trim()}
                       >
                         {tech.trim()}
                       </span>
@@ -142,7 +156,7 @@ export default function Projects() {
       </div>
 
       {projects.length > 3 && (
-        <div className="mt-16 md:mt-16 flex justify-center">
+        <div className="mt-16 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
             className="px-6 py-3 min-h-[44px] rounded-xl
