@@ -2,127 +2,99 @@ export const skills = {
   Languages: [
     { name: "TypeScript", icon: "🟦" },
     { name: "JavaScript", icon: "📜" },
-    { name: "C++", icon: "💻" },
-    { name: "Java", icon: "☕" },
     { name: "Python", icon: "🐍" },
+    { name: "Java", icon: "☕" },
+    { name: "C++", icon: "💻" },
     { name: "SQL", icon: "🗄️" },
   ],
 
   Frontend: [
+    { name: "React.js", icon: "⚛️" },
+    { name: "Next.js", icon: "⏭️" },
+    { name: "React Native (Expo)", icon: "📱" },
     { name: "HTML5", icon: "📄" },
     { name: "CSS3", icon: "🎨" },
     { name: "Tailwind CSS", icon: "🌬️" },
     { name: "shadcn/ui", icon: "🧩" },
-
-    { name: "React.js", icon: "⚛️" },
-    { name: "Next.js", icon: "⏭️" },
-    { name: "React Native (Expo)", icon: "📱" },
-
+    { name: "Framer Motion", icon: "✨" },
     { name: "Redux Toolkit", icon: "🛠️" },
     { name: "React Router", icon: "🛣️" },
     { name: "React Hook Form", icon: "📝" },
     { name: "TanStack Query (React Query)", icon: "⚡" },
-
-    { name: "Framer Motion", icon: "🎬" },
+    { name: "Axios", icon: "📡" },
+    { name: "Zod", icon: "✅" },
   ],
 
   Backend: [
     { name: "Node.js", icon: "🟢" },
     { name: "Express.js", icon: "🚂" },
-
-    { name: "REST APIs", icon: "🌐" },
     { name: "WebSockets", icon: "🔌" },
     { name: "Socket.IO", icon: "⚡" },
-
-    { name: "JWT Authentication", icon: "🛡️" },
-    { name: "Clerk Authentication", icon: "🔑" },
-
-    { name: "Axios", icon: "📡" },
+    { name: "Prisma", icon: "📐" },
+    { name: "Mongoose", icon: "🛠️" },
     { name: "Multer", icon: "📦" },
     { name: "Nodemailer", icon: "✉️" },
-
-    { name: "Stripe", icon: "💳" },
-    { name: "Razorpay", icon: "💰" },
-
     { name: "CRDT (Yjs)", icon: "🔄" },
     { name: "Redis Pub/Sub", icon: "📬" },
-    { name: "Docker", icon: "🐳" },
-
-    { name: "Cloudinary", icon: "☁️" },
   ],
 
   Databases: [
-    { name: "MongoDB", icon: "🍃" },
     { name: "PostgreSQL", icon: "🐘" },
+    { name: "MongoDB", icon: "🍃" },
     { name: "MySQL", icon: "🐬" },
     { name: "Redis", icon: "🟥" },
+  ],
 
-    { name: "Prisma", icon: "📐" },
-    { name: "Mongoose", icon: "🛠️" },
-
+  "BaaS & Cloud": [
     { name: "Supabase", icon: "🌩️" },
-    { name: "MongoDB Atlas", icon: "☁️" },
-    { name: "Upstash Redis", icon: "⚡" },
-    { name: "Neon (Serverless PG)", icon: "🟢" },
+    { name: "Firebase", icon: "🔥" },
+    { name: "Appwrite", icon: "🗄️" },
+    { name: "Cloudinary", icon: "☁️" },
+    { name: "Clerk", icon: "🔑" },
+    { name: "Stripe", icon: "💳" },
+    { name: "Razorpay", icon: "💰" },
+    { name: "Resend", icon: "📤" },
+    { name: "Brevo API", icon: "📧" },
   ],
 
   "DevOps & Tools": [
     { name: "Git", icon: "🐙" },
     { name: "GitHub", icon: "🐱" },
-
+    { name: "Docker", icon: "🐳" },
     { name: "Docker Compose", icon: "📦" },
-
     { name: "Vercel", icon: "▲" },
     { name: "Render", icon: "☁️" },
     { name: "AWS", icon: "🟠" },
-
-    { name: "Firebase", icon: "🔥" },
-    { name: "Appwrite", icon: "🗄️" },
-
     { name: "Postman", icon: "📬" },
+    { name: "ESLint / Prettier", icon: "🧹" },
   ],
 
-  "AI & Integrations": [
+  "AI & APIs": [
     { name: "OpenAI API", icon: "🤖" },
     { name: "Google Gemini API", icon: "🔭" },
     { name: "Mistral AI", icon: "🪄" },
-
     { name: "Vapi API", icon: "🎙️" },
     { name: "CLIPDROP API", icon: "🖼️" },
-
-    { name: "Brevo API", icon: "📧" },
-    { name: "Resend", icon: "📤" },
-
-    { name: "LLM Integrations", icon: "🧠" },
-    { name: "AI SaaS Development", icon: "🚀" },
+    { name: "Vercel AI SDK", icon: "🧠" },
   ],
 
-  Architecture: [
+  "System Design & Protocols": [
+    { name: "REST APIs", icon: "🌐" },
+    { name: "JWT Authentication", icon: "🛡️" },
     { name: "Microservices", icon: "🏗️" },
     { name: "API Gateway Pattern", icon: "🔀" },
-    { name: "Real-time Collaboration", icon: "🤝" },
-    { name: "Scalable System Design", icon: "📈" },
-    { name: "SaaS Architecture", icon: "☁️" },
-    { name: "Authentication Workflows", icon: "🔐" },
-    { name: "Containerized Deployment", icon: "🐳" },
     { name: "WebRTC / HLS Streaming", icon: "📡" },
     { name: "SFU Architecture (Agora, LiveKit)", icon: "🎙️" },
+    { name: "Containerized Deployment", icon: "🐳" },
+    { name: "Authentication Workflows", icon: "🔐" },
   ],
 
   "CS Fundamentals": [
-    { name: "Arrays", icon: "📚" },
-    { name: "Linked Lists", icon: "🔗" },
-    { name: "Stacks & Queues", icon: "🗂️" },
-    { name: "Trees", icon: "🌲" },
-    { name: "Graphs", icon: "🌐" },
-    { name: "Hashing", icon: "🗝️" },
-    { name: "Sorting & Searching", icon: "🔍" },
-    { name: "Recursion", icon: "🔁" },
+    { name: "Data Structures & Algorithms", icon: "📚" },
     { name: "Dynamic Programming", icon: "⚡" },
-
     { name: "OOP", icon: "🏛️" },
     { name: "DBMS", icon: "🗄️" },
-    { name: "Operating System", icon: "💽" },
+    { name: "Operating Systems", icon: "💽" },
     { name: "Computer Networks", icon: "🌐" },
   ],
 };
