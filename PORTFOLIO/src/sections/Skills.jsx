@@ -4,14 +4,15 @@ import SectionWrapper from "../components/SectionWrapper";
 
 export default function Skills() {
   const skillCategories = {
-    "Languages": skills["Languages"],
-    "Frontend": skills["Frontend"],
-    "Backend": skills["Backend"],
-    "Databases / ORM / ODM": skills["Databases / ORM / ODM"],
-    "Cloud & Tools": skills["Cloud & Tools"],
-    "AI & APIs": skills["AI & APIs"],
-    "DSA / Algorithms": skills["DSA / Algorithms"],
-  };
+  "Languages":     skills["Languages"],
+  "Frontend":      skills["Frontend"],
+  "Backend":       skills["Backend"],
+  "Databases":     skills["Databases"],
+  "DevOps & Tools": skills["DevOps & Tools"],
+  "AI & Integrations": skills["AI & Integrations"],
+  "Architecture":  skills["Architecture"],
+  "CS Fundamentals": skills["CS Fundamentals"],
+};
 
   return (
     <SectionWrapper id="skills">
