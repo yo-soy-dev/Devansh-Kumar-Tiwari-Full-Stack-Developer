@@ -1,19 +1,21 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
 const links = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
+  { name: "About",        href: "#about"        },
+  { name: "Skills",       href: "#skills"       },
+  { name: "Projects",     href: "#projects"     },
   { name: "Achievements", href: "#achievements" },
-  { name: "Contact", href: "#contact" },
+  { name: "Certificates", href: "#certificates" },
+  { name: "Contact",      href: "#contact"      },
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("#hero");
+  const [active, setActive]     = useState("#hero");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Active section detection
   useEffect(() => {
     const sections = links
       .map((l) => document.querySelector(l.href))
@@ -22,86 +24,72 @@ export default function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((e) => e.isIntersecting);
-
         if (visible.length > 0) {
           const best = visible.reduce((prev, curr) =>
             curr.intersectionRatio > prev.intersectionRatio ? curr : prev
           );
-
           setActive(`#${best.target.id}`);
         }
       },
-      {
-        threshold: [0.3, 0.6, 0.9],
-        rootMargin: "-80px 0px -40% 0px",
-      }
+      { threshold: [0.3, 0.6, 0.9], rootMargin: "-80px 0px -40% 0px" }
     );
 
     sections.forEach((sec) => observer.observe(sec));
-
     return () => sections.forEach((sec) => observer.unobserve(sec));
   }, []);
 
-  
-  const handleClick = (href) => {
-    setActive(href);
-    setMenuOpen(false);
+  // Fix: lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
-    document
-      .querySelector(href)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
+  // Escape key closes menu
   useEffect(() => {
     const close = (e) => e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
   }, []);
 
+  const handleClick = (href) => {
+    setActive(href);
+    setMenuOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="
-        fixed top-0 w-full z-50
-        bg-[rgba(2,6,23,0.95)]
-        backdrop-blur-md
-        border-b border-slate-800
-      "
+      className="fixed top-0 w-full z-50
+        bg-[rgba(2,6,23,0.95)] backdrop-blur-md border-b border-slate-800"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a
           href="#hero"
           onClick={() => handleClick("#hero")}
-          className="
-            font-semibold text-lg text-cyan-400
-            hover:text-cyan-300 transition
-          "
+          className="font-semibold text-lg text-cyan-400 hover:text-cyan-300 transition"
         >
-          DevanshTiwari.dev
+          <DKT />
         </a>
 
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <div key={link.href} className="relative inline-block">
               <a
                 href={link.href}
                 onClick={() => handleClick(link.href)}
-                className={`
-                  group text-sm py-2
-                  transition
-                  ${
-                    active === link.href
-                      ? "text-white"
-                      : "text-slate-400 hover:text-white"
-                  }
-                `}
                 aria-current={active === link.href ? "page" : undefined}
+                className={`group text-sm py-2 transition ${
+                  active === link.href
+                    ? "text-white"
+                    : "text-slate-400 hover:text-white"
+                }`}
               >
                 {link.name}
               </a>
-
               <AnimatePresence>
                 {active === link.href && (
                   <motion.span
@@ -118,22 +106,23 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Hamburger — Fix: min-h/min-w for 44px tap target */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className="p-2"
+            className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
-            {menuOpen ? (
-              <HiX className="w-6 h-6 text-white" />
-            ) : (
-              <HiMenu className="w-6 h-6 text-white" />
-            )}
+            {menuOpen
+              ? <HiX className="w-6 h-6 text-white" />
+              : <HiMenu className="w-6 h-6 text-white" />
+            }
           </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -141,32 +130,23 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="
-              md:hidden
-              bg-[rgba(2,6,23,0.95)]
-              backdrop-blur-md
-              border-t border-slate-800
-              flex flex-col items-center
-              py-4 space-y-2
-              overflow-y-auto
-              max-h-[80vh]
-            "
+            className="md:hidden bg-[rgba(2,6,23,0.95)] backdrop-blur-md
+              border-t border-slate-800 flex flex-col items-center
+              py-4 space-y-1 overflow-y-auto max-h-[80vh]"
           >
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => handleClick(link.href)}
+                aria-current={active === link.href ? "page" : undefined}
                 className={`
-                  text-lg py-3 px-4 w-full text-center
-                  transition
-                  ${
-                    active === link.href
-                      ? "text-white"
-                      : "text-slate-400 hover:text-white"
+                  text-lg py-3 px-6 w-full text-center transition rounded-lg
+                  ${active === link.href
+                    ? "text-white bg-cyan-400/10 border-l-2 border-cyan-400"
+                    : "text-slate-400 hover:text-white hover:bg-white/5"
                   }
                 `}
-                aria-current={active === link.href ? "page" : undefined}
               >
                 {link.name}
               </a>
