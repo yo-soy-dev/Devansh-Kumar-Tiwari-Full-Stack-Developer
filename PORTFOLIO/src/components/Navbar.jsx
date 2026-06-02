@@ -11,6 +11,14 @@ const links = [
   { name: "Contact",      href: "#contact"      },
 ];
 
+function DKT() {
+  return (
+    <span className="font-bold text-2xl tracking-wider text-cyan-400">
+      DKT
+    </span>
+  );
+}
+
 export default function Navbar() {
   const [active, setActive]     = useState("#hero");
   const [menuOpen, setMenuOpen] = useState(false);
