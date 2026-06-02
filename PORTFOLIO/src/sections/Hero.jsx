@@ -1,7 +1,14 @@
-
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import { Github, Linkedin, Mail, Phone, MapPin, FileText } from "lucide-react";
+
+// Fix: compute mailto href safely — guards against SSR where navigator is undefined
+function getMailHref() {
+  if (typeof navigator === "undefined") return "mailto:devanshtiwari817@gmail.com";
+  return /Android|iPhone/i.test(navigator.userAgent)
+    ? "mailto:devanshtiwari817@gmail.com"
+    : "https://mail.google.com/mail/?view=cm&fs=1&to=devanshtiwari817@gmail.com";
+}
 
 export default function Hero() {
   return (
@@ -16,7 +23,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="relative z-10 text-center lg:text-left max-w-xl"
           >
             <p className="text-sm tracking-widest text-cyan-400 mb-3 md:mb-4 uppercase">
@@ -29,8 +36,9 @@ export default function Hero() {
               </span>
             </h1>
 
-            <h2 className="mt-3 md:mt-4 text-xl md:text-3xl font-semibold text-slate-300">
-              Full-Stack Developer • Mobile Developer • AI SaaS Builder
+            {/* Fix: text-lg as mobile base — prevents overflow on 360px screens */}
+            <h2 className="mt-3 md:mt-4 text-lg md:text-3xl font-semibold text-slate-300 leading-snug">
+              Full-Stack Developer&nbsp;•&nbsp;Mobile Developer&nbsp;•&nbsp;AI SaaS Builder
             </h2>
 
             <p className="mt-5 md:mt-6 text-slate-400 max-w-md leading-relaxed text-sm md:text-base mx-auto lg:mx-0">
@@ -41,12 +49,14 @@ export default function Hero() {
               <span className="text-cyan-400">Next.js</span>,{" "}
               <span className="text-cyan-400">React Native</span>,{" "}
               <span className="text-cyan-400">Node.js</span>, and{" "}
-              <span className="text-cyan-400">TypeScript</span>.
-              Experienced in JWT authentication, REST APIs, cloud deployments, and clean architectures focused on real-world impact.
+              <span className="text-cyan-400">TypeScript</span>.{" "}
+              Experienced in JWT authentication, REST APIs, cloud deployments, and
+              clean architectures focused on real-world impact.
             </p>
           </motion.div>
 
-          {/* IMAGE */}
+          {/* Removed mt-16/mt-20 — SectionWrapper pt-20 already handles top spacing */}
+          {/* Added object-cover object-top so portrait never stretches */}
           <motion.img
             src="/projects/profile.png"
             alt="Portrait of Devansh Kumar Tiwari"
@@ -56,7 +66,7 @@ export default function Hero() {
             className="
               w-48 sm:w-56 md:w-80
               aspect-[4/5]
-              mt-16 md:mt-20 lg:mt-0
+              object-cover object-top
               rounded-xl shadow-2xl
               bg-gradient-to-b from-blue-900/50 to-transparent
               lg:ml-10
@@ -71,12 +81,13 @@ export default function Hero() {
             aria-label="Send email to Devansh"
             className="flex items-center gap-3 md:gap-4 bg-white/5 border border-white/10 rounded-xl p-2.5 md:p-3 backdrop-blur-md min-h-[44px]"
           >
-            <div className="p-2 rounded-lg bg-cyan-400/10">
+            <div className="p-2 rounded-lg bg-cyan-400/10 shrink-0">
               <Mail className="text-cyan-400" />
             </div>
-            <div className="text-left">
+            <div className="text-left min-w-0">
               <p className="text-xs text-slate-400">Email</p>
-              <p className="text-white text-sm md:text-base">devanshtiwari817@gmail.com</p>
+              {/* truncate prevents long email from overflowing card on narrow screens */}
+              <p className="text-white text-sm md:text-base truncate">devanshtiwari817@gmail.com</p>
             </div>
           </a>
 
@@ -85,7 +96,7 @@ export default function Hero() {
             aria-label="Call Devansh"
             className="flex items-center gap-3 md:gap-4 bg-white/5 border border-white/10 rounded-xl p-2.5 md:p-3 backdrop-blur-md min-h-[44px]"
           >
-            <div className="p-2 rounded-lg bg-cyan-400/10">
+            <div className="p-2 rounded-lg bg-cyan-400/10 shrink-0">
               <Phone className="text-cyan-400" />
             </div>
             <div className="text-left">
@@ -95,7 +106,7 @@ export default function Hero() {
           </a>
 
           <div className="flex items-center gap-3 md:gap-4 bg-white/5 border border-white/10 rounded-xl p-2.5 md:p-3 backdrop-blur-md min-h-[44px]">
-            <div className="p-2 rounded-lg bg-cyan-400/10">
+            <div className="p-2 rounded-lg bg-cyan-400/10 shrink-0">
               <MapPin className="text-cyan-400" />
             </div>
             <div className="text-left">
@@ -107,9 +118,11 @@ export default function Hero() {
 
         <div className="mt-6 flex flex-wrap gap-3 md:gap-4 justify-center lg:justify-start">
 
+          {/* download attribute triggers save dialog instead of opening PDF in tab */}
           <a
             href="/resume.pdf"
-            aria-label="Download resume"
+            download="Devansh_Resume.pdf"
+            aria-label="Download Devansh's resume"
             className="flex items-center gap-2 bg-cyan-400 text-black px-5 py-3 min-h-[44px] rounded-xl font-medium hover:scale-105 transition"
           >
             <FileText size={18} />
@@ -120,6 +133,7 @@ export default function Hero() {
             href="https://github.com/yo-soy-dev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Devansh's GitHub profile"
             className="flex items-center gap-2 border border-cyan-400 text-cyan-400 px-5 py-3 min-h-[44px] rounded-xl hover:bg-cyan-400/10 transition"
           >
             <Github size={18} />
@@ -130,18 +144,16 @@ export default function Hero() {
             href="https://linkedin.com/in/yo-soy-dev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Devansh's LinkedIn profile"
             className="flex items-center gap-2 border border-cyan-400 text-cyan-400 px-5 py-3 min-h-[44px] rounded-xl hover:bg-cyan-400/10 transition"
           >
             <Linkedin size={18} />
             LinkedIn
           </a>
 
+          {/* navigator.userAgent moved into getMailHref() — safe from SSR crash */}
           <a
-            href={
-              /Android|iPhone/i.test(navigator.userAgent)
-                ? "mailto:devanshtiwari817@gmail.com"
-                : "https://mail.google.com/mail/?view=cm&fs=1&to=devanshtiwari817@gmail.com"
-            }
+            href={getMailHref()}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Send email to Devansh"
